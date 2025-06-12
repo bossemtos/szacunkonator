@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator Szacunku</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/x-icon" href="toszacunek.png">
+</head>
+<body>
+
+
+    <div class="glass-container">
+        <h1>LICZBA SZACUNKÓW: <span id="counter">0</span></h1>
+        
+
+        <img id="respect-image" src="toszacunek.png" alt="Kliknij, aby okazać szacunek">
+    </div>
+
+
+    <button id="reset-button" title="Resetuj liczbę szacunków">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+            <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+        </svg>
+    </button>
+
+    <div id="toast-notification">TO SZACUNEK</div>
+
+    <audio id="respect-sound" src="toszacunek.mp3"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

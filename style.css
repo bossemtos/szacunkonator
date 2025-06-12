@@ -1,0 +1,220 @@
+:root {
+    --primary-glow: #ff00c1;
+    --secondary-glow: #9a00ff;
+    --background-start: #010007;
+    --background-mid: #14052e;
+    --background-end: #0a001a;
+}
+
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    background: linear-gradient(-45deg, var(--background-start), var(--background-mid), var(--background-end), var(--background-mid));
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    overflow: hidden;
+}
+
+@keyframes gradientBG {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+body.shake-active {
+    animation: screenShake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes screenShake {
+  10%, 90% { transform: translate3d(-1px, 0, 0); }
+  20%, 80% { transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+  40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+.glass-container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    background: rgba(10, 0, 30, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 0, 193, 0.3);
+    box-shadow: 0 0 25px rgba(255, 0, 193, 0.2), inset 0 0 10px rgba(154, 0, 255, 0.5);
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+	0% { transform: translatey(0px); }
+	50% { transform: translatey(-20px); }
+	100% { transform: translatey(0px); }
+}
+
+h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    margin: 0 0 25px 0;
+    color: #fff;
+    position: relative;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px var(--primary-glow), 0 0 35px var(--primary-glow), 0 0 40px var(--primary-glow), 0 0 50px var(--primary-glow), 0 0 75px var(--primary-glow);
+    animation: glitch 1s linear infinite;
+}
+
+@keyframes glitch{
+  2%,64%{ transform: translate(2px,0) skew(0deg); }
+  4%,60%{ transform: translate(-2px,0) skew(0deg); }
+  62%{ transform: translate(0,0) skew(5deg); }
+}
+
+h1:before,
+h1:after{
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+h1:before{
+  left: 2px;
+  text-shadow: -2px 0 var(--secondary-glow);
+  clip: rect(44px, 450px, 56px, 0);
+  animation: glitch-anim 5s infinite linear alternate-reverse;
+}
+
+h1:after{
+  left: -2px;
+  text-shadow: -2px 0 var(--primary-glow), 2px 2px var(--secondary-glow);
+  animation: glitch-anim-2 1s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim {
+  0% { clip: rect(2px, 9999px, 87px, 0); }
+  10% { clip: rect(69px, 9999px, 9px, 0); }
+  20% { clip: rect(31px, 9999px, 9px, 0); }
+  30% { clip: rect(10px, 9999px, 58px, 0); }
+  40% { clip: rect(3px, 9999px, 20px, 0); }
+  50% { clip: rect(3px, 9999px, 8px, 0); }
+  60% { clip: rect(54px, 9999px, 86px, 0); }
+  70% { clip: rect(8px, 9999px, 60px, 0); }
+  80% { clip: rect(31px, 9999px, 19px, 0); }
+  90% { clip: rect(84px, 9999px, 1px, 0); }
+  100% { clip: rect(96px, 9999px, 91px, 0); }
+}
+
+@keyframes glitch-anim-2 {
+  0% { clip: rect(59px, 9999px, 10px, 0); }
+  10% { clip: rect(52px, 9999px, 73px, 0); }
+  20% { clip: rect(57px, 9999px, 3px, 0); }
+  30% { clip: rect(8px, 9999px, 84px, 0); }
+  40% { clip: rect(84px, 9999px, 26px, 0); }
+  50% { clip: rect(53px, 9999px, 3px, 0); }
+  60% { clip: rect(2px, 9999px, 29px, 0); }
+  70% { clip: rect(81px, 9999px, 95px, 0); }
+  80% { clip: rect(48px, 9999px, 57px, 0); }
+  90% { clip: rect(6px, 9999px, 45px, 0); }
+  100% { clip: rect(5px, 9999px, 41px, 0); }
+}
+
+#counter.explode {
+    animation: explode 0.5s ease-out;
+}
+
+@keyframes explode {
+    0% { transform: scale(1); text-shadow: none; opacity: 1; }
+    50% { transform: scale(2.5); text-shadow: 0 0 15px #fff, 0 0 40px var(--primary-glow); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+#respect-image {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 15px;
+    border: 3px solid rgba(255, 0, 193, 0.5);
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    filter: saturate(1);
+}
+
+#respect-image:hover {
+    transform: scale(1.05) rotate(1deg);
+    box-shadow: 0 0 25px var(--primary-glow), 0 0 45px var(--primary-glow), 0 0 60px var(--secondary-glow);
+    border-color: var(--primary-glow);
+    animation: color-shift 2s linear infinite;
+}
+
+@keyframes color-shift {
+    0% { filter: hue-rotate(0deg) saturate(1.5); }
+    100% { filter: hue-rotate(360deg) saturate(1.5); }
+}
+
+#respect-image:active {
+    transform: scale(0.95);
+    filter: brightness(1.5) saturate(2);
+    box-shadow: 0 0 10px var(--primary-glow);
+}
+
+#reset-button {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 45px;
+    height: 45px;
+    background: rgba(255, 29, 29, 0.2);
+    border: 1px solid rgba(255, 29, 29, 0.5);
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    opacity: 0.4;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+#reset-button:hover {
+    opacity: 1;
+    transform: scale(1.1) rotate(180deg);
+    background: rgba(255, 29, 29, 0.8);
+    box-shadow: 0 0 20px #ff1d1d;
+}
+
+#toast-notification {
+    position: fixed;
+    top: 30px;
+    left: 50%;
+    transform: translate(-50%, -150px);
+    background: linear-gradient(45deg, var(--primary-glow), var(--secondary-glow));
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+    z-index: 1000;
+    opacity: 0;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+}
+
+#toast-notification.show {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
